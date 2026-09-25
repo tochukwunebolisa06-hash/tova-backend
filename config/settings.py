@@ -75,6 +75,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "waitlist",
     "faqs",
+    "testimonials",
 ]
 
 MIDDLEWARE = [
