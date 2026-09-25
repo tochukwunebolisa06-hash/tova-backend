@@ -49,6 +49,18 @@ ALLOWED_HOSTS = env_list("ALLOWED_HOSTS", "*")
 
 
 # ---------------------------------------------------------------------------
+# Waitlist counter
+#
+# Optional: added on top of the real database count when returning
+# GET /api/waitlist/count/. Useful if you want the public number to
+# reflect interest gathered before this counter existed (e.g. an earlier
+# signup form). Leave unset/0 to show the exact database count.
+# ---------------------------------------------------------------------------
+
+WAITLIST_COUNT_OFFSET = int(os.environ.get("WAITLIST_COUNT_OFFSET", "0") or 0)
+
+
+# ---------------------------------------------------------------------------
 # Applications
 # ---------------------------------------------------------------------------
 

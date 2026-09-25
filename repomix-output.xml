@@ -61,6 +61,16 @@ manage.py
 Procfile
 README.md
 requirements.txt
+testimonials/__init__.py
+testimonials/admin.py
+testimonials/apps.py
+testimonials/migrations/__init__.py
+testimonials/migrations/0001_initial.py
+testimonials/models.py
+testimonials/serializers.py
+testimonials/tests.py
+testimonials/urls.py
+testimonials/views.py
 waitlist/__init__.py
 waitlist/admin.py
 waitlist/apps.py
@@ -75,6 +85,175 @@ waitlist/views.py
 
 <files>
 This section contains the contents of the repository's files.
+
+<file path="testimonials/__init__.py">
+
+</file>
+
+<file path="testimonials/admin.py">
+from django.contrib import admin
+
+from .models import Testimonial
+
+
+@admin.register(Testimonial)
+class TestimonialAdmin(admin.ModelAdmin):
+    list_display = ["name", "rating", "is_approved", "created_at"]
+    list_editable = ["is_approved"]
+    list_filter = ["is_approved", "rating"]
+    search_fields = ["name", "quote"]
+    ordering = ["-created_at"]
+</file>
+
+<file path="testimonials/apps.py">
+from django.apps import AppConfig
+
+
+class TestimonialsConfig(AppConfig):
+    name = 'testimonials'
+</file>
+
+<file path="testimonials/migrations/__init__.py">
+
+</file>
+
+<file path="testimonials/migrations/0001_initial.py">
+from django.db import migrations, models
+
+
+class Migration(migrations.Migration):
+
+    initial = True
+
+    dependencies = [
+    ]
+
+    operations = [
+        migrations.CreateModel(
+            name='Testimonial',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('name', models.CharField(max_length=120)),
+                ('quote', models.TextField(max_length=600)),
+                ('rating', models.PositiveSmallIntegerField(choices=[(1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5')], default=5)),
+                ('is_approved', models.BooleanField(default=False, help_text='Only approved testimonials appear on the public site.')),
+                ('created_at', models.DateTimeField(auto_now_add=True)),
+            ],
+            options={
+                'verbose_name': 'Testimonial',
+                'verbose_name_plural': 'Testimonials',
+                'ordering': ['-created_at'],
+            },
+        ),
+    ]
+</file>
+
+<file path="testimonials/models.py">
+from django.db import models
+
+
+class Testimonial(models.Model):
+    """A testimonial submitted by a visitor. Only shown on the site once approved."""
+
+    RATING_CHOICES = [(i, str(i)) for i in range(1, 6)]
+
+    name = models.CharField(max_length=120)
+    quote = models.TextField(max_length=600)
+    rating = models.PositiveSmallIntegerField(choices=RATING_CHOICES, default=5)
+    is_approved = models.BooleanField(
+        default=False,
+        help_text="Only approved testimonials appear on the public site.",
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-created_at"]
+        verbose_name = "Testimonial"
+        verbose_name_plural = "Testimonials"
+
+    def __str__(self):
+        return f"{self.name} ({self.rating}\u2605)"
+</file>
+
+<file path="testimonials/serializers.py">
+from rest_framework import serializers
+
+from .models import Testimonial
+
+
+class TestimonialSerializer(serializers.ModelSerializer):
+    """Used for the public GET list — approved testimonials only."""
+
+    class Meta:
+        model = Testimonial
+        fields = ["id", "name", "quote", "rating", "created_at"]
+
+
+class TestimonialSubmitSerializer(serializers.ModelSerializer):
+    """Used for the public submission form. is_approved is never exposed here —
+    every submission starts unapproved and waits for admin review."""
+
+    class Meta:
+        model = Testimonial
+        fields = ["id", "name", "quote", "rating"]
+        read_only_fields = ["id"]
+
+    def validate_name(self, value):
+        value = value.strip()
+        if not value:
+            raise serializers.ValidationError("Name can't be empty.")
+        return value
+
+    def validate_quote(self, value):
+        value = value.strip()
+        if not value:
+            raise serializers.ValidationError("Review can't be empty.")
+        return value
+</file>
+
+<file path="testimonials/tests.py">
+from django.test import TestCase
+
+# Create your tests here.
+</file>
+
+<file path="testimonials/urls.py">
+from django.urls import path
+
+from .views import TestimonialListView, TestimonialSubmitView
+
+urlpatterns = [
+    path("", TestimonialListView.as_view(), name="testimonial-list"),
+    path("submit/", TestimonialSubmitView.as_view(), name="testimonial-submit"),
+]
+</file>
+
+<file path="testimonials/views.py">
+from rest_framework.generics import ListAPIView, CreateAPIView
+
+from .models import Testimonial
+from .serializers import TestimonialSerializer, TestimonialSubmitSerializer
+
+
+class TestimonialListView(ListAPIView):
+    """GET /api/testimonials/  — approved testimonials, newest first."""
+
+    serializer_class = TestimonialSerializer
+
+    def get_queryset(self):
+        return Testimonial.objects.filter(is_approved=True)
+
+
+class TestimonialSubmitView(CreateAPIView):
+    """POST /api/testimonials/submit/  { "name": "...", "quote": "...", "rating": 5 }
+
+    Always creates an unapproved testimonial — it won't show on the site
+    until an admin approves it in Django admin (Testimonials \u2192 Testimonials).
+    """
+
+    queryset = Testimonial.objects.all()
+    serializer_class = TestimonialSubmitSerializer
+</file>
 
 <file path=".env.example">
 # Copy this to .env for local development. On Railway, don't add these as
@@ -326,6 +505,7 @@ urlpatterns = [
     path("api/health/", health_check),
     path("api/waitlist/", include("waitlist.urls")),
     path("api/faqs/", include("faqs.urls")),
+    path("api/testimonials/", include("testimonials.urls")),
 ]
 </file>
 
