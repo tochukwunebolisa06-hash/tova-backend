@@ -1,4 +1,4 @@
-\"""
+"""
 Django settings for the Tova backend.
 
 Reads its configuration from environment variables so it works the same
