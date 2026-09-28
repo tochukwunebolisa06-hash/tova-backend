@@ -5,6 +5,6 @@ from .models import WaitlistEntry
 
 @admin.register(WaitlistEntry)
 class WaitlistEntryAdmin(admin.ModelAdmin):
-    list_display = ["email", "name", "created_at"]
-    search_fields = ["email", "name"]
+    list_display = ["email", "phone", "name", "created_at"]
+    search_fields = ["email", "phone", "name"]
     ordering = ["-created_at"]
