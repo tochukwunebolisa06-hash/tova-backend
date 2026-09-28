@@ -1,4 +1,4 @@
-"""
+\"""
 Django settings for the Tova backend.
 
 Reads its configuration from environment variables so it works the same
@@ -51,8 +51,12 @@ ALLOWED_HOSTS = env_list("ALLOWED_HOSTS", "*")
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 # Origins allowed to submit forms (admin login). Must include https://
-CSRF_TRUSTED_ORIGINS = env_list("CSRF_TRUSTED_ORIGINS", "")
-CSRF_TRUSTED_ORIGINS=https://web-production-27082.up.railway.app
+# Defaults to your Railway domain; override with the CSRF_TRUSTED_ORIGINS
+# env var (comma separated) if you add a custom domain.
+CSRF_TRUSTED_ORIGINS = env_list(
+    "CSRF_TRUSTED_ORIGINS",
+    "https://web-production-27082.up.railway.app",
+)
 
 
 # ---------------------------------------------------------------------------
