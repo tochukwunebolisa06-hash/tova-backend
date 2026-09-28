@@ -87,43 +87,6 @@ waitlist/views.py
 <files>
 This section contains the contents of the repository's files.
 
-<file path="waitlist/migrations/0002_waitlistentry_phone.py">
-from django.db import migrations, models
-
-
-class Migration(migrations.Migration):
-
-    dependencies = [
-        ('waitlist', '0001_initial'),
-    ]
-
-    operations = [
-        migrations.AlterField(
-            model_name='waitlistentry',
-            name='email',
-            field=models.EmailField(blank=True, max_length=254, null=True, unique=True),
-        ),
-        migrations.AddField(
-            model_name='waitlistentry',
-            name='phone',
-            field=models.CharField(
-                blank=True,
-                help_text='International format, e.g. +2348012345678.',
-                max_length=20,
-                null=True,
-                unique=True,
-            ),
-        ),
-        migrations.AddConstraint(
-            model_name='waitlistentry',
-            constraint=models.CheckConstraint(
-                condition=models.Q(('email__isnull', False), ('phone__isnull', False), _connector='OR'),
-                name='waitlist_email_or_phone_required',
-            ),
-        ),
-    ]
-</file>
-
 <file path=".gitignore">
 __pycache__/
 *.pyc
@@ -496,10 +459,10 @@ from .models import Testimonial
 
 @admin.register(Testimonial)
 class TestimonialAdmin(admin.ModelAdmin):
-    list_display = ["name", "rating", "is_approved", "created_at"]
+    list_display = ["name", "university", "rating", "is_approved", "created_at"]
     list_editable = ["is_approved"]
-    list_filter = ["is_approved", "rating"]
-    search_fields = ["name", "quote"]
+    list_filter = ["is_approved", "rating", "university"]
+    search_fields = ["name", "quote", "university"]
     ordering = ["-created_at"]
 </file>
 
@@ -558,6 +521,7 @@ class Testimonial(models.Model):
     name = models.CharField(max_length=120)
     quote = models.TextField(max_length=600)
     rating = models.PositiveSmallIntegerField(choices=RATING_CHOICES, default=5)
+    university = models.CharField(max_length=150, blank=True, default="")
     is_approved = models.BooleanField(
         default=False,
         help_text="Only approved testimonials appear on the public site.",
@@ -583,8 +547,9 @@ class TestimonialSerializer(serializers.ModelSerializer):
     """Used for the public GET list — approved testimonials only."""
 
     class Meta:
+        class Meta:
         model = Testimonial
-        fields = ["id", "name", "quote", "rating", "created_at"]
+        fields = ["id", "name", "quote", "rating", "university", "created_at"]
 
 
 class TestimonialSubmitSerializer(serializers.ModelSerializer):
@@ -593,7 +558,7 @@ class TestimonialSubmitSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Testimonial
-        fields = ["id", "name", "quote", "rating"]
+        fields = ["id", "name", "quote", "rating", "university"]
         read_only_fields = ["id"]
 
     def validate_name(self, value):
@@ -607,6 +572,9 @@ class TestimonialSubmitSerializer(serializers.ModelSerializer):
         if not value:
             raise serializers.ValidationError("Review can't be empty.")
         return value
+
+    def validate_university(self, value):
+        return (value or "").strip()
 </file>
 
 <file path="testimonials/tests.py">
@@ -657,19 +625,6 @@ class TestimonialSubmitView(CreateAPIView):
 
 </file>
 
-<file path="waitlist/admin.py">
-from django.contrib import admin
-
-from .models import WaitlistEntry
-
-
-@admin.register(WaitlistEntry)
-class WaitlistEntryAdmin(admin.ModelAdmin):
-    list_display = ["email", "phone", "name", "created_at"]
-    search_fields = ["email", "phone", "name"]
-    ordering = ["-created_at"]
-</file>
-
 <file path="waitlist/apps.py">
 from django.apps import AppConfig
 
@@ -711,6 +666,100 @@ class Migration(migrations.Migration):
             },
         ),
     ]
+</file>
+
+<file path="waitlist/migrations/0002_waitlistentry_phone.py">
+from django.db import migrations, models
+
+
+class Migration(migrations.Migration):
+
+    dependencies = [
+        ('waitlist', '0001_initial'),
+    ]
+
+    operations = [
+        migrations.AlterField(
+            model_name='waitlistentry',
+            name='email',
+            field=models.EmailField(blank=True, max_length=254, null=True, unique=True),
+        ),
+        migrations.AddField(
+            model_name='waitlistentry',
+            name='phone',
+            field=models.CharField(
+                blank=True,
+                help_text='International format, e.g. +2348012345678.',
+                max_length=20,
+                null=True,
+                unique=True,
+            ),
+        ),
+        migrations.AddConstraint(
+            model_name='waitlistentry',
+            constraint=models.CheckConstraint(
+                condition=models.Q(('email__isnull', False), ('phone__isnull', False), _connector='OR'),
+                name='waitlist_email_or_phone_required',
+            ),
+        ),
+    ]
+</file>
+
+<file path="waitlist/tests.py">
+from django.test import TestCase
+
+# Create your tests here.
+</file>
+
+<file path=".env.example">
+# Copy this to .env for local development. On Railway, don't add these as
+# files — set them as environment variables in the service's Variables tab
+# instead (DATABASE_URL is set for you automatically once Postgres is linked).
+
+SECRET_KEY=change-me-to-a-random-string
+DEBUG=True
+ALLOWED_HOSTS=*
+CORS_ALLOWED_ORIGINS=http://localhost:5173,http://127.0.0.1:5173
+
+# Leave unset locally to use sqlite. Railway sets this for you.
+# DATABASE_URL=postgresql://user:password@host:port/dbname
+
+# Optional — added on top of the real waitlist count returned by
+# GET /api/waitlist/count/. Leave at 0 (or unset) to show the exact
+# database count.
+WAITLIST_COUNT_OFFSET=0
+</file>
+
+<file path="config/urls.py">
+from django.contrib import admin
+from django.http import JsonResponse
+from django.urls import path, include
+
+
+def health_check(request):
+    return JsonResponse({"status": "ok"})
+
+
+urlpatterns = [
+    path("admin/", admin.site.urls),
+    path("api/health/", health_check),
+    path("api/waitlist/", include("waitlist.urls")),
+    path("api/faqs/", include("faqs.urls")),
+    path("api/testimonials/", include("testimonials.urls")),
+]
+</file>
+
+<file path="waitlist/admin.py">
+from django.contrib import admin
+
+from .models import WaitlistEntry
+
+
+@admin.register(WaitlistEntry)
+class WaitlistEntryAdmin(admin.ModelAdmin):
+    list_display = ["email", "phone", "name", "created_at"]
+    search_fields = ["email", "phone", "name"]
+    ordering = ["-created_at"]
 </file>
 
 <file path="waitlist/models.py">
@@ -837,50 +886,6 @@ class WaitlistJoinSerializer(serializers.Serializer):
         return attrs
 </file>
 
-<file path="waitlist/tests.py">
-from django.test import TestCase
-
-# Create your tests here.
-</file>
-
-<file path=".env.example">
-# Copy this to .env for local development. On Railway, don't add these as
-# files — set them as environment variables in the service's Variables tab
-# instead (DATABASE_URL is set for you automatically once Postgres is linked).
-
-SECRET_KEY=change-me-to-a-random-string
-DEBUG=True
-ALLOWED_HOSTS=*
-CORS_ALLOWED_ORIGINS=http://localhost:5173,http://127.0.0.1:5173
-
-# Leave unset locally to use sqlite. Railway sets this for you.
-# DATABASE_URL=postgresql://user:password@host:port/dbname
-
-# Optional — added on top of the real waitlist count returned by
-# GET /api/waitlist/count/. Leave at 0 (or unset) to show the exact
-# database count.
-WAITLIST_COUNT_OFFSET=0
-</file>
-
-<file path="config/urls.py">
-from django.contrib import admin
-from django.http import JsonResponse
-from django.urls import path, include
-
-
-def health_check(request):
-    return JsonResponse({"status": "ok"})
-
-
-urlpatterns = [
-    path("admin/", admin.site.urls),
-    path("api/health/", health_check),
-    path("api/waitlist/", include("waitlist.urls")),
-    path("api/faqs/", include("faqs.urls")),
-    path("api/testimonials/", include("testimonials.urls")),
-]
-</file>
-
 <file path="waitlist/urls.py">
 from django.urls import path
 
@@ -890,72 +895,6 @@ urlpatterns = [
     path("", WaitlistJoinView.as_view(), name="waitlist-join"),
     path("count/", WaitlistCountView.as_view(), name="waitlist-count"),
 ]
-</file>
-
-<file path="waitlist/views.py">
-from django.conf import settings
-from django.db import IntegrityError
-from django.db.models import Q
-from rest_framework import status
-from rest_framework.response import Response
-from rest_framework.views import APIView
-
-from .models import WaitlistEntry
-from .serializers import WaitlistJoinSerializer
-
-ALREADY_JOINED = {"detail": "You're already on the waitlist.", "already_joined": True}
-
-
-class WaitlistJoinView(APIView):
-    """POST /api/waitlist/
-
-    Body: { "email": "..." } or { "phone": "..." } (or both), plus an
-    optional "name". Re-submitting an email/phone that's already on the list
-    returns a friendly "already joined" response instead of an error.
-    """
-
-    def post(self, request):
-        serializer = WaitlistJoinSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-
-        email = serializer.validated_data.get("email")
-        phone = serializer.validated_data.get("phone")
-        name = serializer.validated_data.get("name", "")
-
-        lookup = Q()
-        if email:
-            lookup |= Q(email=email)
-        if phone:
-            lookup |= Q(phone=phone)
-
-        if WaitlistEntry.objects.filter(lookup).exists():
-            return Response(ALREADY_JOINED, status=status.HTTP_200_OK)
-
-        try:
-            WaitlistEntry.objects.create(email=email, phone=phone, name=name)
-        except IntegrityError:
-            # Two identical requests raced each other — the other one won.
-            return Response(ALREADY_JOINED, status=status.HTTP_200_OK)
-
-        return Response(
-            {"detail": "You're on the waitlist!", "already_joined": False},
-            status=status.HTTP_201_CREATED,
-        )
-
-
-class WaitlistCountView(APIView):
-    """GET /api/waitlist/count/  — total number of people on the waitlist.
-
-    Adds WAITLIST_COUNT_OFFSET (an optional env var, defaults to 0) on top
-    of the real database count, in case you ever want the public number to
-    reflect interest gathered before this counter existed. Leave it
-    unset/0 to show the exact database count.
-    """
-
-    def get(self, request):
-        real_count = WaitlistEntry.objects.count()
-        offset = getattr(settings, "WAITLIST_COUNT_OFFSET", 0)
-        return Response({"count": real_count + offset})
 </file>
 
 <file path="config/settings.py">
@@ -1154,6 +1093,72 @@ REST_FRAMEWORK = {
         "anon": "30/minute",
     },
 }
+</file>
+
+<file path="waitlist/views.py">
+from django.conf import settings
+from django.db import IntegrityError
+from django.db.models import Q
+from rest_framework import status
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
+from .models import WaitlistEntry
+from .serializers import WaitlistJoinSerializer
+
+ALREADY_JOINED = {"detail": "You're already on the waitlist.", "already_joined": True}
+
+
+class WaitlistJoinView(APIView):
+    """POST /api/waitlist/
+
+    Body: { "email": "..." } or { "phone": "..." } (or both), plus an
+    optional "name". Re-submitting an email/phone that's already on the list
+    returns a friendly "already joined" response instead of an error.
+    """
+
+    def post(self, request):
+        serializer = WaitlistJoinSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+        email = serializer.validated_data.get("email")
+        phone = serializer.validated_data.get("phone")
+        name = serializer.validated_data.get("name", "")
+
+        lookup = Q()
+        if email:
+            lookup |= Q(email=email)
+        if phone:
+            lookup |= Q(phone=phone)
+
+        if WaitlistEntry.objects.filter(lookup).exists():
+            return Response(ALREADY_JOINED, status=status.HTTP_200_OK)
+
+        try:
+            WaitlistEntry.objects.create(email=email, phone=phone, name=name)
+        except IntegrityError:
+            # Two identical requests raced each other — the other one won.
+            return Response(ALREADY_JOINED, status=status.HTTP_200_OK)
+
+        return Response(
+            {"detail": "You're on the waitlist!", "already_joined": False},
+            status=status.HTTP_201_CREATED,
+        )
+
+
+class WaitlistCountView(APIView):
+    """GET /api/waitlist/count/  — total number of people on the waitlist.
+
+    Adds WAITLIST_COUNT_OFFSET (an optional env var, defaults to 0) on top
+    of the real database count, in case you ever want the public number to
+    reflect interest gathered before this counter existed. Leave it
+    unset/0 to show the exact database count.
+    """
+
+    def get(self, request):
+        real_count = WaitlistEntry.objects.count()
+        offset = getattr(settings, "WAITLIST_COUNT_OFFSET", 0)
+        return Response({"count": real_count + offset})
 </file>
 
 </files>

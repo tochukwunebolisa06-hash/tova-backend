@@ -8,7 +8,7 @@ class TestimonialSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Testimonial
-        fields = ["id", "name", "quote", "rating", "created_at"]
+        fields = ["id", "name", "quote", "rating", "university", "created_at"]
 
 
 class TestimonialSubmitSerializer(serializers.ModelSerializer):
@@ -17,7 +17,7 @@ class TestimonialSubmitSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Testimonial
-        fields = ["id", "name", "quote", "rating"]
+        fields = ["id", "name", "quote", "rating", "university"]
         read_only_fields = ["id"]
 
     def validate_name(self, value):
@@ -31,3 +31,6 @@ class TestimonialSubmitSerializer(serializers.ModelSerializer):
         if not value:
             raise serializers.ValidationError("Review can't be empty.")
         return value
+
+    def validate_university(self, value):
+        return (value or "").strip()

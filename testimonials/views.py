@@ -14,10 +14,10 @@ class TestimonialListView(ListAPIView):
 
 
 class TestimonialSubmitView(CreateAPIView):
-    """POST /api/testimonials/submit/  { "name": "...", "quote": "...", "rating": 5 }
+    """POST /api/testimonials/submit/  { "name": "...", "quote": "...", "rating": 5, "university": "..." (optional) }
 
     Always creates an unapproved testimonial — it won't show on the site
-    until an admin approves it in Django admin (Testimonials \u2192 Testimonials).
+    until an admin approves it in Django admin (Testimonials → Testimonials).
     """
 
     queryset = Testimonial.objects.all()

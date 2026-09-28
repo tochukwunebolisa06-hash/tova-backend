@@ -21,24 +21,32 @@ API is at `http://localhost:8000/api/`, admin at `http://localhost:8000/admin/`.
 
 ## Endpoints
 
-| Method | URL                 | What it does                                             |
-|--------|---------------------|------------------------------------------------------------|
-| GET    | `/api/health/`      | Health check — returns `{"status": "ok"}`                 |
-| POST   | `/api/waitlist/`    | Join the waitlist. Body: `{"email": "...", "name": "..."}` (`name` optional). Re-submitting the same email returns a friendly "already joined" response instead of an error. |
-| GET    | `/api/faqs/`        | List published FAQs, in the order set in the admin.        |
-| POST   | `/api/faqs/ask/`    | Submit a question. Body: `{"question": "...", "email": "..."}` (`email` optional). |
+| Method | URL                          | What it does |
+|--------|------------------------------|--------------|
+| GET    | `/api/health/`               | Health check — returns `{"status": "ok"}` |
+| POST   | `/api/waitlist/`             | Join the waitlist. Body: `{"email": "...", "phone": "...", "name": "..."}` — send an email, a phone number, or both (`name` optional). Re-submitting an existing email/phone returns a friendly "already joined" response instead of an error. |
+| GET    | `/api/waitlist/count/`       | Total number of people on the waitlist, plus `WAITLIST_COUNT_OFFSET` if set. Returns `{"count": 123}`. |
+| GET    | `/api/faqs/`                 | List published FAQs, in the order set in the admin. |
+| POST   | `/api/faqs/ask/`             | Submit a question. Body: `{"question": "...", "email": "..."}` (`email` optional). |
+| GET    | `/api/testimonials/`         | List approved testimonials, newest first. |
+| POST   | `/api/testimonials/submit/`  | Submit a testimonial. Body: `{"name": "...", "quote": "...", "rating": 5, "university": "..."}` (`rating` defaults to 5, `university` optional). Always starts unapproved. |
 
-## Managing FAQ content
+## Managing content
 
-Everything shown on the live FAQs page is managed from the Django admin at
-`/admin/`, under **Faqs → FAQs**: add a question/answer, set the `order` it
+Everything shown on the live site is managed from the Django admin at
+`/admin/`.
+
+**FAQs** — under **Faqs → FAQs**: add a question/answer, set the `order` it
 appears in, and toggle `is_published` to hide/show it without deleting it.
 
 Questions visitors submit through the "ask a question" box land in
 **Faqs → Submitted questions** — a separate inbox, not shown on the site —
 where you can mark them answered and turn good ones into real FAQ entries.
 
-The waitlist itself is under **Waitlist → Waitlist entries**.
+**Testimonials** — submissions land in **Testimonials → Testimonials**
+unapproved. Tick `is_approved` to publish one on the site.
+
+**Waitlist** — under **Waitlist → Waitlist entries**.
 
 ## Deploying to Railway
 
@@ -52,6 +60,8 @@ The waitlist itself is under **Waitlist → Waitlist entries**.
    - `ALLOWED_HOSTS` — your Railway domain, e.g. `tova-backend.up.railway.app`
    - `CORS_ALLOWED_ORIGINS` — your deployed frontend's URL, e.g.
      `https://tova.vercel.app` (comma-separate more than one)
+   - `WAITLIST_COUNT_OFFSET` — optional, added on top of the real waitlist count
+   - `WAITLIST_DEFAULT_COUNTRY_CODE` — optional, defaults to `234`
 4. Railway detects the `Procfile` and runs it as the start command — it
    runs migrations, collects static files, then starts gunicorn. No release
    step to configure separately.
@@ -61,7 +71,8 @@ The waitlist itself is under **Waitlist → Waitlist entries**.
 ## Project layout
 
 ```
-config/       settings, root urls, wsgi/asgi
-waitlist/     WaitlistEntry model + /api/waitlist/
-faqs/         FAQ + FAQQuestion models + /api/faqs/ and /api/faqs/ask/
+config/         settings, root urls, wsgi/asgi
+waitlist/       WaitlistEntry model + /api/waitlist/ and /api/waitlist/count/
+faqs/           FAQ + FAQQuestion models + /api/faqs/ and /api/faqs/ask/
+testimonials/   Testimonial model + /api/testimonials/ and /api/testimonials/submit/
 ```

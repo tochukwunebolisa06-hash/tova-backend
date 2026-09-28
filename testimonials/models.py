@@ -9,6 +9,7 @@ class Testimonial(models.Model):
     name = models.CharField(max_length=120)
     quote = models.TextField(max_length=600)
     rating = models.PositiveSmallIntegerField(choices=RATING_CHOICES, default=5)
+    university = models.CharField(max_length=150, blank=True, default="")
     is_approved = models.BooleanField(
         default=False,
         help_text="Only approved testimonials appear on the public site.",
@@ -22,3 +23,6 @@ class Testimonial(models.Model):
 
     def __str__(self):
         return f"{self.name} ({self.rating}\u2605)"
+
+    
+        
