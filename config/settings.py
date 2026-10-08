@@ -87,6 +87,7 @@ INSTALLED_APPS = [
     "waitlist",
     "faqs",
     "testimonials",
+    "partners",
 ]
 
 MIDDLEWARE = [
@@ -202,5 +203,7 @@ REST_FRAMEWORK = {
     ],
     "DEFAULT_THROTTLE_RATES": {
         "anon": "30/minute",
+        # Partnership inquiry form: stricter limit to stop spam.
+        "inquiry": "5/hour",
     },
 }

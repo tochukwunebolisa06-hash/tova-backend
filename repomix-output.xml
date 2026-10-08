@@ -72,9 +72,13 @@ testimonials/serializers.py
 testimonials/tests.py
 testimonials/urls.py
 testimonials/views.py
+waitlist_import.csv
 waitlist/__init__.py
 waitlist/admin.py
 waitlist/apps.py
+waitlist/management/__init__.py
+waitlist/management/commands/__init__.py
+waitlist/management/commands/import_waitlist.py
 waitlist/migrations/__init__.py
 waitlist/migrations/0001_initial.py
 waitlist/migrations/0002_waitlistentry_phone.py
@@ -87,6 +91,223 @@ waitlist/views.py
 
 <files>
 This section contains the contents of the repository's files.
+
+<file path="waitlist_import.csv">
+name,email
+Princewill Bonnie,princewill.bonnie25@wigweuniversity.edu.ng
+Favour Mbamalu,favour.mbamalu25@wigweuniversity.edu.ng
+Chimenem Wike,chimenem.wike25@wigweuniversity.edu.ng
+Lolia Charles,lolia.charles25@wigweuniversity.edu.ng
+Fayeofori Korubo,fayeofori.korubo25@wigweuniversity.edu.ng
+Weyimi Aramolu,weyimi.aramolu25@wigweuniversity.edu.ng
+Kim Ukpong,kim.ukpong25@wigweuniversity.edu.ng
+Timi Salvation,timi.salvation25@wigweuniversity.edu.ng
+Jenkyns Omagbemi,jenkyns.omagbemi25@wigweuniversity.edu.ng
+Esther Innocent,esther.innocent25@wigweuniversity.edu.ng
+Tamarakro Pius,tamarakro.pius25@wigweuniversity.edu.ng
+Michael Amah-Cletus,michael.amah_cletus25@wigweuniversity.edu.ng
+Zeyzey Ufere,zeyzey.ufere25@wigweuniversity.edu.ng
+Excel Idumange,excel.idumange25@wigweuniversity.edu.ng
+Ovunda Oke-Echie,ovunda.oke_echie25@wigweuniversity.edu.ng
+Seiyefa Elijah,seiyefa.elijah25@wigweuniversity.edu.ng
+Ubaydah Balogun Razaq,ubaydah.balogunrazaq25@wigweuniversity.edu.ng
+Victory Ebebi,victory.ebebi25@wigweuniversity.edu.ng
+David Owi,david.owi25@wigweuniversity.edu.ng
+Emmanuel Ogola,emmanuel.ogola25@wigweuniversity.edu.ng
+Aniefiok Archibong,aniefiok.archibong25@wigweuniversity.edu.ng
+Diseye Sien,diseye.sien25@wigweuniversity.edu.ng
+Spencerdgreat Paul-Worika,spencerdgreat.paul_worika25@wigweuniversity.edu.ng
+Progress Tom,progress.tom25@wigweuniversity.edu.ng
+Richman Isaiah,richman.isaiah25@wigweuniversity.edu.ng
+Oritsejemiyotan Edun,oritsejemiyotan.edun25@wigweuniversity.edu.ng
+Zilayefa Igbunu,zilayefa.igbunu25@wigweuniversity.edu.ng
+Efe Adagbra,efe.adagbra25@wigweuniversity.edu.ng
+Edith Lemon,edith.lemon25@wigweuniversity.edu.ng
+Tamarabrakemi Adika,tamarabrakemi.adika25@wigweuniversity.edu.ng
+Zorbari Lawrence,zorbari.lawrence25@wigweuniversity.edu.ng
+Kelvin Lube,kelvin.lube25@wigweuniversity.edu.ng
+Biedomo Leghemo,biedomo.leghemo25@wigweuniversity.edu.ng
+Miracle Ayebanoa,miracle.ayebanoa25@wigweuniversity.edu.ng
+Roland Mala,roland.mala25@wigweuniversity.edu.ng
+Laurita Lawson,laurita.lawson25@wigweuniversity.edu.ng
+Victor Simeon,victor.simeon25@wigweuniversity.edu.ng
+Esosa Obaseki,esosa.obaseki25@wigweuniversity.edu.ng
+Walter Amafaye,walter.amafaye25@wigweuniversity.edu.ng
+Biye Asaikpuka,biye.asaikpuka25@wigweuniversity.edu.ng
+Omonefe Kio,omonefe.kio25@wigweuniversity.edu.ng
+Mirabel Idibi,mirabel.idibi25@wigweuniversity.edu.ng
+Timiepere Aseri,timiepere.aseri25@wigweuniversity.edu.ng
+Chukwuebuka Nze,chukwuebuka.nze25@wigweuniversity.edu.ng
+Degbeye Ebitebela,degbeye.ebitebela25@wigweuniversity.edu.ng
+Juliet Akpowaide,juliet.akpowaide25@wigweuniversity.edu.ng
+Queen Moyo,queen.moyo25@wigweuniversity.edu.ng
+Isioma Ugoji,isioma.ugoji25@wigweuniversity.edu.ng
+Favoured Igali,favoured.igali25@wigweuniversity.edu.ng
+Ebiyor Anthony,ebiyor.anthony25@wigweuniversity.edu.ng
+Charity Erinkoko,charity.erinkoko25@wigweuniversity.edu.ng
+Anthony Amughan,anthony.amughan25@wigweuniversity.edu.ng
+Chidinma Ehibudu,chidinma.ehibudu25@wigweuniversity.edu.ng
+Chukwudi Amako,chukwudi.amako25@wigweuniversity.edu.ng
+Tamaraudenyefa Ayemi,tamaraudenyefa.ayemi25@wigweuniversity.edu.ng
+Emmanuel Leleituagha,emmanuel.leleituagha25@wigweuniversity.edu.ng
+Perefajufa Abednego,perefajufa.abednego25@wigweuniversity.edu.ng
+Elvis Ogbunude,elvis.ogbunude25@wigweuniversity.edu.ng
+Taretimi Emmanuel,taretimi.emmanuel25@wigweuniversity.edu.ng
+Emmanuella Joseph,emmanuella.joseph25@wigweuniversity.edu.ng
+Efetobore Ugen,efetobore.ugen25@wigweuniversity.edu.ng
+Tarilayefa Kekemeke,tarilayefa.kekemeke25@wigweuniversity.edu.ng
+Favour Preye,favour.preye25@wigweuniversity.edu.ng
+Chiburoma Hadassah Chiorlu,chiburomahadassah.chiorlu25@wigweuniversity.edu.ng
+Shalom Ogunka,shalom.ogunka25@wigweuniversity.edu.ng
+Solomon Alfred,solomon.alfred25@wigweuniversity.edu.ng
+Destiny Anenene,destiny.anenene25@wigweuniversity.edu.ng
+Great Uyaterimor,great.uyaterimor25@wigweuniversity.edu.ng
+Favour Oboko,favour.oboko25@wigweuniversity.edu.ng
+Bright Okpiri,bright.okpiri25@wigweuniversity.edu.ng
+Praise God Abugo,praisegod.abugo25@wigweuniversity.edu.ng
+Finitei Tunyan,finitei.tunyan25@wigweuniversity.edu.ng
+Freedom Roland,freedom.roland25@wigweuniversity.edu.ng
+Chinemerem Godswill,chinemerem.godswill25@wigweuniversity.edu.ng
+Emmanuel Tabita,emmanuel.tabita25@wigweuniversity.edu.ng
+Omamoke Egone,omamoke.egone25@wigweuniversity.edu.ng
+Jehff Jeclives,jehff.jeclives25@wigweuniversity.edu.ng
+Anderson Darlington,anderson.darlington25@wigweuniversity.edu.ng
+Brakemi Esite,brakemi.esite25@wigweuniversity.edu.ng
+Tamaratare Gbe,tamaratare.gbe25@wigweuniversity.edu.ng
+Jewel Dappa,jewel.dappa25@wigweuniversity.edu.ng
+Ayibaditomini Idoughe,ayibaditomini.idoughe25@wigweuniversity.edu.ng
+Mitchell Brown,mitchell.brown25@wigweuniversity.edu.ng
+Michael Anaro,michael.anaro25@wigweuniversity.edu.ng
+Abel Dabor,abel.dabor25@wigweuniversity.edu.ng
+Ebitimi Tonfawei,ebitimi.tonfawei25@wigweuniversity.edu.ng
+Ebidi Wilsom,ebidi.wilsom25@wigweuniversity.edu.ng
+Christopher Billy,christopher.billy25@wigweuniversity.edu.ng
+Ebis Uyaterimor,ebis.uyaterimor25@wigweuniversity.edu.ng
+Goodluck Dabor,goodluck.dabor25@wigweuniversity.edu.ng
+Ephraim Febaide,ephraim.febaide25@wigweuniversity.edu.ng
+Eshorame James,eshorame.james25@wigweuniversity.edu.ng
+Ezer Ashiegbu,ezer.ashiegbu25@wigweuniversity.edu.ng
+Emmanuel Freeborn,emmanuel.freeborn25@wigweuniversity.edu.ng
+Peremobo Ajube,peremobo.ajube25@wigweuniversity.edu.ng
+Raphael Chukwumati,raphael.chukwumati25@wigweuniversity.edu.ng
+Godswill Asia,godswill.asia25@wigweuniversity.edu.ng
+Great Itomu,great.itomu25@wigweuniversity.edu.ng
+Jesse Iyagba,jesse.iyagba25@wigweuniversity.edu.ng
+Chinemerem Ezinna,chinemerem.ezinna25@wigweuniversity.edu.ng
+Oluwatobiloba Adesanya,oluwatobiloba.adesanya25@wigweuniversity.edu.ng
+Tochukwu Nebolisa,tochukwu.nebolisa25@wigweuniversity.edu.ng
+Chijiokem Nwaokobia,chijiokem.nwaokobia25@wigweuniversity.edu.ng
+Anointed Oyabrade,anointed.oyabrade25@wigweuniversity.edu.ng
+Izokumor Mamawei,izokumor.mamawei25@wigweuniversity.edu.ng
+Ayebaifie Lucky,ayebaifie.lucky25@wigweuniversity.edu.ng
+Joy Uwubiti,joy.uwubiti25@wigweuniversity.edu.ng
+Sarah Perekosifa,sarah.perekosifa25@wigweuniversity.edu.ng
+Tombra Orugbo,tombra.orugbo25@wigweuniversity.edu.ng
+Joyce Makaraba,joyce.makaraba25@wigweuniversity.edu.ng
+Simeon Emmanuel,simeon.emmanuel25@wigweuniversity.edu.ng
+David Ogbugo,david.ogbugo25@wigweuniversity.edu.ng
+Ebitimi Emmanuel,ebitimi.emmanuel25@wigweuniversity.edu.ng
+Eze Philemon,eze.philemon25@wigweuniversity.edu.ng
+Brave Ogu-Kingsley,brave.ogu_kingsley25@wigweuniversity.edu.ng
+Godwin Sipasi,godwin.sipasi25@wigweuniversity.edu.ng
+Doubra Meinfade,doubra.meinfade25@wigweuniversity.edu.ng
+Peremor Anthony,peremor.anthony25@wigweuniversity.edu.ng
+Layefa Ganfo,layefa.ganfo25@wigweuniversity.edu.ng
+Prosper Gbadia,prosper.gbadia25@wigweuniversity.edu.ng
+Ayibapriye Igarama,ayibapriye.igarama25@wigweuniversity.edu.ng
+Angel Stevens,angel.stevens25@wigweuniversity.edu.ng
+Edidiong Okon,edidiong.okon25@wigweuniversity.edu.ng
+Emmanuelah Pepple,emmanuelah.pepple24@wigweuniversity.edu.ng
+Destiny Oguma,destiny.oguma25@wigweuniversity.edu.ng
+Okeoghene Onokohwomo,okeoghene.onokohwomo25@wigweuniversity.edu.ng
+Ebimor Obode,ebimor.obode25@wigweuniversity.edu.ng
+Great Victor,great.victor25@wigweuniversity.edu.ng
+Peculiar Chukwu,peculiar.chukwu25@wigweuniversity.edu.ng
+Ogonna Nwuke,ogonna.nwuke25@wigweuniversity.edu.ng
+Epebitimi Orudubo,epebitimi.orudubo25@wigweuniversity.edu.ng
+Great Gbenebode,great.gbenebode25@wigweuniversity.edu.ng
+Wisdom Fabor,wisdom.fabor25@wigweuniversity.edu.ng
+Clement Mala,clement.mala25@wigweuniversity.edu.ng
+Divine Governor,divine.governor25@wigweuniversity.edu.ng
+Davis Zipador,davis.zipador25@wigweuniversity.edu.ng
+Daniel Ibibo,daniel.ibibo25@wigweuniversity.edu.ng
+Mishael Yahaya,mishael.yahaya25@wigweuniversity.edu.ng
+Ejimofor Okwechime,ejimofor.okwechime25@wigweuniversity.edu.ng
+Osuwo Gbozimor,osuwo.gbozimor25@wigweuniversity.edu.ng
+Moses Fawari,moses.fawari25@wigweuniversity.edu.ng
+Emmanuel Izubiri,emmanuel.izubiri25@wigweuniversity.edu.ng
+Ayebawanaemi DanJumbo,ayebawanaemi.dan_jumbo25@wigweuniversity.edu.ng
+Joy Tonye,joy.tonye25@wigweuniversity.edu.ng
+Wisdom Edmond,wisdom.edmond25@wigweuniversity.edu.ng
+Zahra Okechukwu-Nnachi,zahra.okechukwu_nnachi25@wigweuniversity.edu.ng
+Oyeinmiesinde Pious,oyeinmiesinde.pious25@wigweuniversity.edu.ng
+Phebean Ogunderu,phebean.ogunderu25@wigweuniversity.edu.ng
+Ayibawakiente Beregha,ayibawakiente.beregha25@wigweuniversity.edu.ng
+Favour Ekpetipu,favour.ekpetipu25@wigweuniversity.edu.ng
+Joshua Oboku,joshua.oboku25@wigweuniversity.edu.ng
+George Newman,george.newman25@wigweuniversity.edu.ng
+Samuel Romeo,samuel.romeo25@wigweuniversity.edu.ng
+Sunshine Uroju,sunshine.uroju25@wigweuniversity.edu.ng
+Iniobong Ebong,iniobong.ebong25@wigweuniversity.edu.ng
+Omiyenyaseiya Tangbe,omiyenyaseiya.tangbe25@wigweuniversity.edu.ng
+Racheal Morgan,racheal.morgan25@wigweuniversity.edu.ng
+Charles Chikere,charles.chikere25@wigweuniversity.edu.ng
+Emmanuel Ekpemandu,emmanuel.ekpemandu25@wigweuniversity.edu.ng
+Moses Simon,moses.simon25@wigweuniversity.edu.ng
+Brandson Agburuga,brandson.agburuga25@wigweuniversity.edu.ng
+Sean Ukpabi,sean.ukpabi25@wigweuniversity.edu.ng
+Progress Tonlagha,progress.tonlaghaprecious25@wigweuniversity.edu.ng
+Paul Agboufa Chizoa,paul.agboufachizoa25@wigweuniversity.edu.ng
+Jessica Napoleon,jessica.napoleon25@wigweuniversity.edu.ng
+Williams Koffie,williams.koffie25@wigweuniversity.edu.ng
+Elohor Benedicta Idonoteguono,elohorbenedicta.idonoteguono25@wigweuniversity.edu.ng
+Prince Opuende,prince.opuende25@wigweuniversity.edu.ng
+Oghenemarho Olori,oghenemarho.olori25@wigweuniversity.edu.ng
+Chioma Dimgba,chioma.dimgba25@wigweuniversity.edu.ng
+Yerin Amos,yerin.amos25@wigweuniversity.edu.ng
+Tamarau-Ebi Odeh,tamarau_ebi.odeh25@wigweuniversity.edu.ng
+Robert Ejiofor,robert.ejiofor25@wigweuniversity.edu.ng
+</file>
+
+<file path="waitlist/management/__init__.py">
+
+</file>
+
+<file path="waitlist/management/commands/__init__.py">
+
+</file>
+
+<file path="waitlist/management/commands/import_waitlist.py">
+import csv
+
+from django.core.management.base import BaseCommand
+
+from waitlist.models import WaitlistEntry
+
+
+class Command(BaseCommand):
+    help = "Bulk import waitlist entries from a CSV with name,email columns."
+
+    def add_arguments(self, parser):
+        parser.add_argument("csv_path")
+
+    def handle(self, *args, **options):
+        created = skipped = 0
+        with open(options["csv_path"], newline="", encoding="utf-8") as f:
+            for row in csv.DictReader(f):
+                email = (row.get("email") or "").strip().lower()
+                name = (row.get("name") or "").strip()
+                if not email:
+                    continue
+                _, was_created = WaitlistEntry.objects.get_or_create(
+                    email=email, defaults={"name": name}
+                )
+                if was_created:
+                    created += 1
+                else:
+                    skipped += 1
+        self.stdout.write(self.style.SUCCESS(f"Added {created}, skipped {skipped} already on the list."))
+</file>
 
 <file path=".gitignore">
 __pycache__/
@@ -1049,8 +1270,12 @@ ALLOWED_HOSTS = env_list("ALLOWED_HOSTS", "*")
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 # Origins allowed to submit forms (admin login). Must include https://
-CSRF_TRUSTED_ORIGINS = env_list("CSRF_TRUSTED_ORIGINS", "")
-CSRF_TRUSTED_ORIGINS=https://web-production-27082.up.railway.app
+# Defaults to your Railway domain; override with the CSRF_TRUSTED_ORIGINS
+# env var (comma separated) if you add a custom domain.
+CSRF_TRUSTED_ORIGINS = env_list(
+    "CSRF_TRUSTED_ORIGINS",
+    "https://web-production-27082.up.railway.app",
+)
 
 
 # ---------------------------------------------------------------------------

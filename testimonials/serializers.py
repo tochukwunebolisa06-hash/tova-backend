@@ -8,12 +8,22 @@ class TestimonialSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Testimonial
-        fields = ["id", "name", "quote", "rating", "university", "created_at"]
+        fields = [
+            "id",
+            "name",
+            "quote",
+            "rating",
+            "university",
+            "category",
+            "role",
+            "created_at",
+        ]
 
 
 class TestimonialSubmitSerializer(serializers.ModelSerializer):
-    """Used for the public submission form. is_approved is never exposed here —
-    every submission starts unapproved and waits for admin review."""
+    """Used for the public submission form. is_approved, category and role are
+    never exposed here — every submission starts unapproved as a regular
+    'student' review, and an admin can recategorise it during review."""
 
     class Meta:
         model = Testimonial
