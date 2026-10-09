@@ -21,13 +21,14 @@ class TestimonialSerializer(serializers.ModelSerializer):
 
 
 class TestimonialSubmitSerializer(serializers.ModelSerializer):
-    """Used for the public submission form. is_approved, category and role are
-    never exposed here — every submission starts unapproved as a regular
-    'student' review, and an admin can recategorise it during review."""
+    """Used for the public submission form. is_approved is never exposed here —
+    every submission starts unapproved and waits for admin review, so letting
+    visitors pick a category / role is safe: nothing shows until you approve it
+    (and you can recategorise it in the admin)."""
 
     class Meta:
         model = Testimonial
-        fields = ["id", "name", "quote", "rating", "university"]
+        fields = ["id", "name", "quote", "rating", "university", "category", "role"]
         read_only_fields = ["id"]
 
     def validate_name(self, value):
@@ -43,4 +44,7 @@ class TestimonialSubmitSerializer(serializers.ModelSerializer):
         return value
 
     def validate_university(self, value):
+        return (value or "").strip()
+
+    def validate_role(self, value):
         return (value or "").strip()
