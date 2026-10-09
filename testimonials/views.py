@@ -5,7 +5,7 @@ from .serializers import TestimonialSerializer, TestimonialSubmitSerializer
 
 
 class TestimonialListView(ListAPIView):
-    """GET /api/testimonials/  — approved testimonials, newest first."""
+    """GET /api/testimonials/ returns approved testimonials, newest first."""
 
     serializer_class = TestimonialSerializer
 
@@ -14,10 +14,11 @@ class TestimonialListView(ListAPIView):
 
 
 class TestimonialSubmitView(CreateAPIView):
-    """POST /api/testimonials/submit/  { "name": "...", "quote": "...", "rating": 5, "university": "..." (optional) }
+    """POST /api/testimonials/submit/
+    { "name": "...", "quote": "...", "rating": 5, "university": "..." (optional) }
 
-    Always creates an unapproved testimonial — it won't show on the site
-    until an admin approves it in Django admin (Testimonials → Testimonials).
+    New testimonials are published immediately. To hide one, untick
+    is_approved in Django admin (Testimonials, then Testimonials).
     """
 
     queryset = Testimonial.objects.all()

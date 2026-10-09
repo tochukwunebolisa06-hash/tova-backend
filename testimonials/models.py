@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Testimonial(models.Model):
-    """A testimonial submitted by a visitor. Only shown on the site once approved."""
+    """A testimonial submitted by a visitor. Published automatically unless hidden in admin."""
 
     RATING_CHOICES = [(i, str(i)) for i in range(1, 6)]
 
@@ -28,8 +28,8 @@ class Testimonial(models.Model):
         help_text="Shown under the name, e.g. 'Senior Pastor, Lagos'. Falls back to the university if blank.",
     )
     is_approved = models.BooleanField(
-        default=False,
-        help_text="Only approved testimonials appear on the public site.",
+        default=True,
+        help_text="Untick to hide a testimonial from the public site.",
     )
     created_at = models.DateTimeField(auto_now_add=True)
 

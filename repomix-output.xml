@@ -58,6 +58,15 @@ faqs/tests.py
 faqs/urls.py
 faqs/views.py
 manage.py
+partners/__init__.py
+partners/admin.py
+partners/apps.py
+partners/migrations/__init__.py
+partners/migrations/0001_initial.py
+partners/models.py
+partners/serializers.py
+partners/urls.py
+partners/views.py
 Procfile
 README.md
 requirements.txt
@@ -67,6 +76,7 @@ testimonials/apps.py
 testimonials/migrations/__init__.py
 testimonials/migrations/0001_initial.py
 testimonials/migrations/0002_testimonial_university.py
+testimonials/migrations/0003_testimonial_category_role.py
 testimonials/models.py
 testimonials/serializers.py
 testimonials/tests.py
@@ -91,223 +101,6 @@ waitlist/views.py
 
 <files>
 This section contains the contents of the repository's files.
-
-<file path="waitlist_import.csv">
-name,email
-Princewill Bonnie,princewill.bonnie25@wigweuniversity.edu.ng
-Favour Mbamalu,favour.mbamalu25@wigweuniversity.edu.ng
-Chimenem Wike,chimenem.wike25@wigweuniversity.edu.ng
-Lolia Charles,lolia.charles25@wigweuniversity.edu.ng
-Fayeofori Korubo,fayeofori.korubo25@wigweuniversity.edu.ng
-Weyimi Aramolu,weyimi.aramolu25@wigweuniversity.edu.ng
-Kim Ukpong,kim.ukpong25@wigweuniversity.edu.ng
-Timi Salvation,timi.salvation25@wigweuniversity.edu.ng
-Jenkyns Omagbemi,jenkyns.omagbemi25@wigweuniversity.edu.ng
-Esther Innocent,esther.innocent25@wigweuniversity.edu.ng
-Tamarakro Pius,tamarakro.pius25@wigweuniversity.edu.ng
-Michael Amah-Cletus,michael.amah_cletus25@wigweuniversity.edu.ng
-Zeyzey Ufere,zeyzey.ufere25@wigweuniversity.edu.ng
-Excel Idumange,excel.idumange25@wigweuniversity.edu.ng
-Ovunda Oke-Echie,ovunda.oke_echie25@wigweuniversity.edu.ng
-Seiyefa Elijah,seiyefa.elijah25@wigweuniversity.edu.ng
-Ubaydah Balogun Razaq,ubaydah.balogunrazaq25@wigweuniversity.edu.ng
-Victory Ebebi,victory.ebebi25@wigweuniversity.edu.ng
-David Owi,david.owi25@wigweuniversity.edu.ng
-Emmanuel Ogola,emmanuel.ogola25@wigweuniversity.edu.ng
-Aniefiok Archibong,aniefiok.archibong25@wigweuniversity.edu.ng
-Diseye Sien,diseye.sien25@wigweuniversity.edu.ng
-Spencerdgreat Paul-Worika,spencerdgreat.paul_worika25@wigweuniversity.edu.ng
-Progress Tom,progress.tom25@wigweuniversity.edu.ng
-Richman Isaiah,richman.isaiah25@wigweuniversity.edu.ng
-Oritsejemiyotan Edun,oritsejemiyotan.edun25@wigweuniversity.edu.ng
-Zilayefa Igbunu,zilayefa.igbunu25@wigweuniversity.edu.ng
-Efe Adagbra,efe.adagbra25@wigweuniversity.edu.ng
-Edith Lemon,edith.lemon25@wigweuniversity.edu.ng
-Tamarabrakemi Adika,tamarabrakemi.adika25@wigweuniversity.edu.ng
-Zorbari Lawrence,zorbari.lawrence25@wigweuniversity.edu.ng
-Kelvin Lube,kelvin.lube25@wigweuniversity.edu.ng
-Biedomo Leghemo,biedomo.leghemo25@wigweuniversity.edu.ng
-Miracle Ayebanoa,miracle.ayebanoa25@wigweuniversity.edu.ng
-Roland Mala,roland.mala25@wigweuniversity.edu.ng
-Laurita Lawson,laurita.lawson25@wigweuniversity.edu.ng
-Victor Simeon,victor.simeon25@wigweuniversity.edu.ng
-Esosa Obaseki,esosa.obaseki25@wigweuniversity.edu.ng
-Walter Amafaye,walter.amafaye25@wigweuniversity.edu.ng
-Biye Asaikpuka,biye.asaikpuka25@wigweuniversity.edu.ng
-Omonefe Kio,omonefe.kio25@wigweuniversity.edu.ng
-Mirabel Idibi,mirabel.idibi25@wigweuniversity.edu.ng
-Timiepere Aseri,timiepere.aseri25@wigweuniversity.edu.ng
-Chukwuebuka Nze,chukwuebuka.nze25@wigweuniversity.edu.ng
-Degbeye Ebitebela,degbeye.ebitebela25@wigweuniversity.edu.ng
-Juliet Akpowaide,juliet.akpowaide25@wigweuniversity.edu.ng
-Queen Moyo,queen.moyo25@wigweuniversity.edu.ng
-Isioma Ugoji,isioma.ugoji25@wigweuniversity.edu.ng
-Favoured Igali,favoured.igali25@wigweuniversity.edu.ng
-Ebiyor Anthony,ebiyor.anthony25@wigweuniversity.edu.ng
-Charity Erinkoko,charity.erinkoko25@wigweuniversity.edu.ng
-Anthony Amughan,anthony.amughan25@wigweuniversity.edu.ng
-Chidinma Ehibudu,chidinma.ehibudu25@wigweuniversity.edu.ng
-Chukwudi Amako,chukwudi.amako25@wigweuniversity.edu.ng
-Tamaraudenyefa Ayemi,tamaraudenyefa.ayemi25@wigweuniversity.edu.ng
-Emmanuel Leleituagha,emmanuel.leleituagha25@wigweuniversity.edu.ng
-Perefajufa Abednego,perefajufa.abednego25@wigweuniversity.edu.ng
-Elvis Ogbunude,elvis.ogbunude25@wigweuniversity.edu.ng
-Taretimi Emmanuel,taretimi.emmanuel25@wigweuniversity.edu.ng
-Emmanuella Joseph,emmanuella.joseph25@wigweuniversity.edu.ng
-Efetobore Ugen,efetobore.ugen25@wigweuniversity.edu.ng
-Tarilayefa Kekemeke,tarilayefa.kekemeke25@wigweuniversity.edu.ng
-Favour Preye,favour.preye25@wigweuniversity.edu.ng
-Chiburoma Hadassah Chiorlu,chiburomahadassah.chiorlu25@wigweuniversity.edu.ng
-Shalom Ogunka,shalom.ogunka25@wigweuniversity.edu.ng
-Solomon Alfred,solomon.alfred25@wigweuniversity.edu.ng
-Destiny Anenene,destiny.anenene25@wigweuniversity.edu.ng
-Great Uyaterimor,great.uyaterimor25@wigweuniversity.edu.ng
-Favour Oboko,favour.oboko25@wigweuniversity.edu.ng
-Bright Okpiri,bright.okpiri25@wigweuniversity.edu.ng
-Praise God Abugo,praisegod.abugo25@wigweuniversity.edu.ng
-Finitei Tunyan,finitei.tunyan25@wigweuniversity.edu.ng
-Freedom Roland,freedom.roland25@wigweuniversity.edu.ng
-Chinemerem Godswill,chinemerem.godswill25@wigweuniversity.edu.ng
-Emmanuel Tabita,emmanuel.tabita25@wigweuniversity.edu.ng
-Omamoke Egone,omamoke.egone25@wigweuniversity.edu.ng
-Jehff Jeclives,jehff.jeclives25@wigweuniversity.edu.ng
-Anderson Darlington,anderson.darlington25@wigweuniversity.edu.ng
-Brakemi Esite,brakemi.esite25@wigweuniversity.edu.ng
-Tamaratare Gbe,tamaratare.gbe25@wigweuniversity.edu.ng
-Jewel Dappa,jewel.dappa25@wigweuniversity.edu.ng
-Ayibaditomini Idoughe,ayibaditomini.idoughe25@wigweuniversity.edu.ng
-Mitchell Brown,mitchell.brown25@wigweuniversity.edu.ng
-Michael Anaro,michael.anaro25@wigweuniversity.edu.ng
-Abel Dabor,abel.dabor25@wigweuniversity.edu.ng
-Ebitimi Tonfawei,ebitimi.tonfawei25@wigweuniversity.edu.ng
-Ebidi Wilsom,ebidi.wilsom25@wigweuniversity.edu.ng
-Christopher Billy,christopher.billy25@wigweuniversity.edu.ng
-Ebis Uyaterimor,ebis.uyaterimor25@wigweuniversity.edu.ng
-Goodluck Dabor,goodluck.dabor25@wigweuniversity.edu.ng
-Ephraim Febaide,ephraim.febaide25@wigweuniversity.edu.ng
-Eshorame James,eshorame.james25@wigweuniversity.edu.ng
-Ezer Ashiegbu,ezer.ashiegbu25@wigweuniversity.edu.ng
-Emmanuel Freeborn,emmanuel.freeborn25@wigweuniversity.edu.ng
-Peremobo Ajube,peremobo.ajube25@wigweuniversity.edu.ng
-Raphael Chukwumati,raphael.chukwumati25@wigweuniversity.edu.ng
-Godswill Asia,godswill.asia25@wigweuniversity.edu.ng
-Great Itomu,great.itomu25@wigweuniversity.edu.ng
-Jesse Iyagba,jesse.iyagba25@wigweuniversity.edu.ng
-Chinemerem Ezinna,chinemerem.ezinna25@wigweuniversity.edu.ng
-Oluwatobiloba Adesanya,oluwatobiloba.adesanya25@wigweuniversity.edu.ng
-Tochukwu Nebolisa,tochukwu.nebolisa25@wigweuniversity.edu.ng
-Chijiokem Nwaokobia,chijiokem.nwaokobia25@wigweuniversity.edu.ng
-Anointed Oyabrade,anointed.oyabrade25@wigweuniversity.edu.ng
-Izokumor Mamawei,izokumor.mamawei25@wigweuniversity.edu.ng
-Ayebaifie Lucky,ayebaifie.lucky25@wigweuniversity.edu.ng
-Joy Uwubiti,joy.uwubiti25@wigweuniversity.edu.ng
-Sarah Perekosifa,sarah.perekosifa25@wigweuniversity.edu.ng
-Tombra Orugbo,tombra.orugbo25@wigweuniversity.edu.ng
-Joyce Makaraba,joyce.makaraba25@wigweuniversity.edu.ng
-Simeon Emmanuel,simeon.emmanuel25@wigweuniversity.edu.ng
-David Ogbugo,david.ogbugo25@wigweuniversity.edu.ng
-Ebitimi Emmanuel,ebitimi.emmanuel25@wigweuniversity.edu.ng
-Eze Philemon,eze.philemon25@wigweuniversity.edu.ng
-Brave Ogu-Kingsley,brave.ogu_kingsley25@wigweuniversity.edu.ng
-Godwin Sipasi,godwin.sipasi25@wigweuniversity.edu.ng
-Doubra Meinfade,doubra.meinfade25@wigweuniversity.edu.ng
-Peremor Anthony,peremor.anthony25@wigweuniversity.edu.ng
-Layefa Ganfo,layefa.ganfo25@wigweuniversity.edu.ng
-Prosper Gbadia,prosper.gbadia25@wigweuniversity.edu.ng
-Ayibapriye Igarama,ayibapriye.igarama25@wigweuniversity.edu.ng
-Angel Stevens,angel.stevens25@wigweuniversity.edu.ng
-Edidiong Okon,edidiong.okon25@wigweuniversity.edu.ng
-Emmanuelah Pepple,emmanuelah.pepple24@wigweuniversity.edu.ng
-Destiny Oguma,destiny.oguma25@wigweuniversity.edu.ng
-Okeoghene Onokohwomo,okeoghene.onokohwomo25@wigweuniversity.edu.ng
-Ebimor Obode,ebimor.obode25@wigweuniversity.edu.ng
-Great Victor,great.victor25@wigweuniversity.edu.ng
-Peculiar Chukwu,peculiar.chukwu25@wigweuniversity.edu.ng
-Ogonna Nwuke,ogonna.nwuke25@wigweuniversity.edu.ng
-Epebitimi Orudubo,epebitimi.orudubo25@wigweuniversity.edu.ng
-Great Gbenebode,great.gbenebode25@wigweuniversity.edu.ng
-Wisdom Fabor,wisdom.fabor25@wigweuniversity.edu.ng
-Clement Mala,clement.mala25@wigweuniversity.edu.ng
-Divine Governor,divine.governor25@wigweuniversity.edu.ng
-Davis Zipador,davis.zipador25@wigweuniversity.edu.ng
-Daniel Ibibo,daniel.ibibo25@wigweuniversity.edu.ng
-Mishael Yahaya,mishael.yahaya25@wigweuniversity.edu.ng
-Ejimofor Okwechime,ejimofor.okwechime25@wigweuniversity.edu.ng
-Osuwo Gbozimor,osuwo.gbozimor25@wigweuniversity.edu.ng
-Moses Fawari,moses.fawari25@wigweuniversity.edu.ng
-Emmanuel Izubiri,emmanuel.izubiri25@wigweuniversity.edu.ng
-Ayebawanaemi DanJumbo,ayebawanaemi.dan_jumbo25@wigweuniversity.edu.ng
-Joy Tonye,joy.tonye25@wigweuniversity.edu.ng
-Wisdom Edmond,wisdom.edmond25@wigweuniversity.edu.ng
-Zahra Okechukwu-Nnachi,zahra.okechukwu_nnachi25@wigweuniversity.edu.ng
-Oyeinmiesinde Pious,oyeinmiesinde.pious25@wigweuniversity.edu.ng
-Phebean Ogunderu,phebean.ogunderu25@wigweuniversity.edu.ng
-Ayibawakiente Beregha,ayibawakiente.beregha25@wigweuniversity.edu.ng
-Favour Ekpetipu,favour.ekpetipu25@wigweuniversity.edu.ng
-Joshua Oboku,joshua.oboku25@wigweuniversity.edu.ng
-George Newman,george.newman25@wigweuniversity.edu.ng
-Samuel Romeo,samuel.romeo25@wigweuniversity.edu.ng
-Sunshine Uroju,sunshine.uroju25@wigweuniversity.edu.ng
-Iniobong Ebong,iniobong.ebong25@wigweuniversity.edu.ng
-Omiyenyaseiya Tangbe,omiyenyaseiya.tangbe25@wigweuniversity.edu.ng
-Racheal Morgan,racheal.morgan25@wigweuniversity.edu.ng
-Charles Chikere,charles.chikere25@wigweuniversity.edu.ng
-Emmanuel Ekpemandu,emmanuel.ekpemandu25@wigweuniversity.edu.ng
-Moses Simon,moses.simon25@wigweuniversity.edu.ng
-Brandson Agburuga,brandson.agburuga25@wigweuniversity.edu.ng
-Sean Ukpabi,sean.ukpabi25@wigweuniversity.edu.ng
-Progress Tonlagha,progress.tonlaghaprecious25@wigweuniversity.edu.ng
-Paul Agboufa Chizoa,paul.agboufachizoa25@wigweuniversity.edu.ng
-Jessica Napoleon,jessica.napoleon25@wigweuniversity.edu.ng
-Williams Koffie,williams.koffie25@wigweuniversity.edu.ng
-Elohor Benedicta Idonoteguono,elohorbenedicta.idonoteguono25@wigweuniversity.edu.ng
-Prince Opuende,prince.opuende25@wigweuniversity.edu.ng
-Oghenemarho Olori,oghenemarho.olori25@wigweuniversity.edu.ng
-Chioma Dimgba,chioma.dimgba25@wigweuniversity.edu.ng
-Yerin Amos,yerin.amos25@wigweuniversity.edu.ng
-Tamarau-Ebi Odeh,tamarau_ebi.odeh25@wigweuniversity.edu.ng
-Robert Ejiofor,robert.ejiofor25@wigweuniversity.edu.ng
-</file>
-
-<file path="waitlist/management/__init__.py">
-
-</file>
-
-<file path="waitlist/management/commands/__init__.py">
-
-</file>
-
-<file path="waitlist/management/commands/import_waitlist.py">
-import csv
-
-from django.core.management.base import BaseCommand
-
-from waitlist.models import WaitlistEntry
-
-
-class Command(BaseCommand):
-    help = "Bulk import waitlist entries from a CSV with name,email columns."
-
-    def add_arguments(self, parser):
-        parser.add_argument("csv_path")
-
-    def handle(self, *args, **options):
-        created = skipped = 0
-        with open(options["csv_path"], newline="", encoding="utf-8") as f:
-            for row in csv.DictReader(f):
-                email = (row.get("email") or "").strip().lower()
-                name = (row.get("name") or "").strip()
-                if not email:
-                    continue
-                _, was_created = WaitlistEntry.objects.get_or_create(
-                    email=email, defaults={"name": name}
-                )
-                if was_created:
-                    created += 1
-                else:
-                    skipped += 1
-        self.stdout.write(self.style.SUCCESS(f"Added {created}, skipped {skipped} already on the list."))
-</file>
 
 <file path=".gitignore">
 __pycache__/
@@ -584,6 +377,262 @@ if __name__ == '__main__':
     main()
 </file>
 
+<file path="partners/__init__.py">
+
+</file>
+
+<file path="partners/admin.py">
+from django.contrib import admin
+
+from .models import ChurchPartner, PartnershipInquiry
+
+
+@admin.register(ChurchPartner)
+class ChurchPartnerAdmin(admin.ModelAdmin):
+    list_display = ["name", "location", "order", "is_published", "updated_at"]
+    list_editable = ["order", "is_published"]
+    search_fields = ["name", "location", "quote", "author"]
+    ordering = ["order", "created_at"]
+
+
+@admin.register(PartnershipInquiry)
+class PartnershipInquiryAdmin(admin.ModelAdmin):
+    list_display = ["church_name", "contact_name", "email", "phone", "is_contacted", "created_at"]
+    list_editable = ["is_contacted"]
+    list_filter = ["is_contacted"]
+    search_fields = ["church_name", "contact_name", "email", "phone", "message"]
+    ordering = ["-created_at"]
+</file>
+
+<file path="partners/apps.py">
+from django.apps import AppConfig
+
+
+class PartnersConfig(AppConfig):
+    name = 'partners'
+</file>
+
+<file path="partners/migrations/__init__.py">
+
+</file>
+
+<file path="partners/migrations/0001_initial.py">
+from django.db import migrations, models
+
+
+class Migration(migrations.Migration):
+
+    initial = True
+
+    dependencies = [
+    ]
+
+    operations = [
+        migrations.CreateModel(
+            name='ChurchPartner',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('name', models.CharField(max_length=120)),
+                ('subtitle', models.CharField(blank=True, default='', help_text='Optional second line under the name, e.g. the city.', max_length=120)),
+                ('location', models.CharField(blank=True, default='', max_length=150)),
+                ('logo_url', models.URLField(blank=True, default='', help_text="Link to the church's logo image (PNG/SVG). Leave blank for a placeholder.", max_length=500)),
+                ('quote', models.TextField(max_length=700)),
+                ('author', models.CharField(help_text='Who the quote is from, e.g. the church name.', max_length=150)),
+                ('role', models.CharField(blank=True, default='', help_text='e.g. Lead Pastor & Church Leadership Team', max_length=150)),
+                ('rating', models.PositiveSmallIntegerField(choices=[(1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5')], default=5)),
+                ('order', models.PositiveIntegerField(default=0, help_text='Lower numbers show first in the carousel.')),
+                ('is_published', models.BooleanField(default=True)),
+                ('created_at', models.DateTimeField(auto_now_add=True)),
+                ('updated_at', models.DateTimeField(auto_now=True)),
+            ],
+            options={
+                'verbose_name': 'Church partner',
+                'verbose_name_plural': 'Church partners',
+                'ordering': ['order', 'created_at'],
+            },
+        ),
+        migrations.CreateModel(
+            name='PartnershipInquiry',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('church_name', models.CharField(max_length=150)),
+                ('contact_name', models.CharField(max_length=150)),
+                ('email', models.EmailField(max_length=254)),
+                ('phone', models.CharField(blank=True, default='', max_length=30)),
+                ('message', models.TextField(blank=True, default='', max_length=1000)),
+                ('is_contacted', models.BooleanField(default=False)),
+                ('created_at', models.DateTimeField(auto_now_add=True)),
+            ],
+            options={
+                'verbose_name': 'Partnership inquiry',
+                'verbose_name_plural': 'Partnership inquiries',
+                'ordering': ['-created_at'],
+            },
+        ),
+    ]
+</file>
+
+<file path="partners/models.py">
+from django.db import models
+
+
+class ChurchPartner(models.Model):
+    """A church partnership shown in the Home page carousel."""
+
+    RATING_CHOICES = [(i, str(i)) for i in range(1, 6)]
+
+    name = models.CharField(max_length=120)
+    subtitle = models.CharField(
+        max_length=120,
+        blank=True,
+        default="",
+        help_text="Optional second line under the name, e.g. the city.",
+    )
+    location = models.CharField(max_length=150, blank=True, default="")
+    logo_url = models.URLField(
+        max_length=500,
+        blank=True,
+        default="",
+        help_text="Link to the church's logo image (PNG/SVG). Leave blank for a placeholder.",
+    )
+    quote = models.TextField(max_length=700)
+    author = models.CharField(
+        max_length=150,
+        help_text="Who the quote is from, e.g. the church name.",
+    )
+    role = models.CharField(
+        max_length=150,
+        blank=True,
+        default="",
+        help_text="e.g. Lead Pastor & Church Leadership Team",
+    )
+    rating = models.PositiveSmallIntegerField(choices=RATING_CHOICES, default=5)
+    order = models.PositiveIntegerField(
+        default=0, help_text="Lower numbers show first in the carousel."
+    )
+    is_published = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["order", "created_at"]
+        verbose_name = "Church partner"
+        verbose_name_plural = "Church partners"
+
+    def __str__(self):
+        return self.name
+
+
+class PartnershipInquiry(models.Model):
+    """Submitted through the 'Join Partnership' form on the Home page."""
+
+    church_name = models.CharField(max_length=150)
+    contact_name = models.CharField(max_length=150)
+    email = models.EmailField()
+    phone = models.CharField(max_length=30, blank=True, default="")
+    message = models.TextField(max_length=1000, blank=True, default="")
+    is_contacted = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-created_at"]
+        verbose_name = "Partnership inquiry"
+        verbose_name_plural = "Partnership inquiries"
+
+    def __str__(self):
+        return f"{self.church_name} — {self.contact_name}"
+</file>
+
+<file path="partners/serializers.py">
+from rest_framework import serializers
+
+from .models import ChurchPartner, PartnershipInquiry
+
+
+class ChurchPartnerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ChurchPartner
+        fields = [
+            "id",
+            "name",
+            "subtitle",
+            "location",
+            "logo_url",
+            "quote",
+            "author",
+            "role",
+            "rating",
+            "order",
+        ]
+
+
+class PartnershipInquirySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PartnershipInquiry
+        fields = ["id", "church_name", "contact_name", "email", "phone", "message"]
+        read_only_fields = ["id"]
+
+    def validate_church_name(self, value):
+        value = value.strip()
+        if not value:
+            raise serializers.ValidationError("Please enter your church or ministry name.")
+        return value
+
+    def validate_contact_name(self, value):
+        value = value.strip()
+        if not value:
+            raise serializers.ValidationError("Please enter your name.")
+        return value
+
+    def validate_phone(self, value):
+        return (value or "").strip()
+
+    def validate_message(self, value):
+        return (value or "").strip()
+</file>
+
+<file path="partners/urls.py">
+from django.urls import path
+
+from .views import ChurchPartnerListView, PartnershipInquiryView
+
+urlpatterns = [
+    path("", ChurchPartnerListView.as_view(), name="partner-list"),
+    path("inquire/", PartnershipInquiryView.as_view(), name="partner-inquire"),
+]
+</file>
+
+<file path="partners/views.py">
+from rest_framework.generics import ListAPIView, CreateAPIView
+from rest_framework.throttling import AnonRateThrottle, ScopedRateThrottle
+
+from .models import ChurchPartner, PartnershipInquiry
+from .serializers import ChurchPartnerSerializer, PartnershipInquirySerializer
+
+
+class ChurchPartnerListView(ListAPIView):
+    """GET /api/partners/  — published church partners, in admin-defined order."""
+
+    serializer_class = ChurchPartnerSerializer
+
+    def get_queryset(self):
+        return ChurchPartner.objects.filter(is_published=True)
+
+
+class PartnershipInquiryView(CreateAPIView):
+    """POST /api/partners/inquire/
+    { "church_name": "...", "contact_name": "...", "email": "...",
+      "phone": "..." (optional), "message": "..." (optional) }
+
+    Rate limited (see 'inquiry' in REST_FRAMEWORK settings) to curb spam.
+    """
+
+    queryset = PartnershipInquiry.objects.all()
+    serializer_class = PartnershipInquirySerializer
+    throttle_classes = [AnonRateThrottle, ScopedRateThrottle]
+    throttle_scope = "inquiry"
+</file>
+
 <file path="Procfile">
 web: python manage.py migrate --noinput && python manage.py collectstatic --noinput && gunicorn config.wsgi --bind 0.0.0.0:$PORT --log-file -
 </file>
@@ -667,6 +716,40 @@ class Migration(migrations.Migration):
     ]
 </file>
 
+<file path="testimonials/migrations/0003_testimonial_category_role.py">
+from django.db import migrations, models
+
+
+class Migration(migrations.Migration):
+
+    dependencies = [
+        ('testimonials', '0002_testimonial_university'),
+    ]
+
+    operations = [
+        migrations.AddField(
+            model_name='testimonial',
+            name='category',
+            field=models.CharField(
+                choices=[('student', 'Student / Member'), ('leader', 'Pastor / Church leader')],
+                default='student',
+                help_text='Which column of the Home page this appears in.',
+                max_length=10,
+            ),
+        ),
+        migrations.AddField(
+            model_name='testimonial',
+            name='role',
+            field=models.CharField(
+                blank=True,
+                default='',
+                help_text="Shown under the name, e.g. 'Senior Pastor, Lagos'. Falls back to the university if blank.",
+                max_length=150,
+            ),
+        ),
+    ]
+</file>
+
 <file path="testimonials/tests.py">
 from django.test import TestCase
 
@@ -684,6 +767,183 @@ urlpatterns = [
 ]
 </file>
 
+<file path="waitlist_import.csv">
+name,email
+Princewill Bonnie,princewill.bonnie25@wigweuniversity.edu.ng
+Favour Mbamalu,favour.mbamalu25@wigweuniversity.edu.ng
+Chimenem Wike,chimenem.wike25@wigweuniversity.edu.ng
+Lolia Charles,lolia.charles25@wigweuniversity.edu.ng
+Fayeofori Korubo,fayeofori.korubo25@wigweuniversity.edu.ng
+Weyimi Aramolu,weyimi.aramolu25@wigweuniversity.edu.ng
+Kim Ukpong,kim.ukpong25@wigweuniversity.edu.ng
+Timi Salvation,timi.salvation25@wigweuniversity.edu.ng
+Jenkyns Omagbemi,jenkyns.omagbemi25@wigweuniversity.edu.ng
+Esther Innocent,esther.innocent25@wigweuniversity.edu.ng
+Tamarakro Pius,tamarakro.pius25@wigweuniversity.edu.ng
+Michael Amah-Cletus,michael.amah_cletus25@wigweuniversity.edu.ng
+Zeyzey Ufere,zeyzey.ufere25@wigweuniversity.edu.ng
+Excel Idumange,excel.idumange25@wigweuniversity.edu.ng
+Ovunda Oke-Echie,ovunda.oke_echie25@wigweuniversity.edu.ng
+Seiyefa Elijah,seiyefa.elijah25@wigweuniversity.edu.ng
+Ubaydah Balogun Razaq,ubaydah.balogunrazaq25@wigweuniversity.edu.ng
+Victory Ebebi,victory.ebebi25@wigweuniversity.edu.ng
+David Owi,david.owi25@wigweuniversity.edu.ng
+Emmanuel Ogola,emmanuel.ogola25@wigweuniversity.edu.ng
+Aniefiok Archibong,aniefiok.archibong25@wigweuniversity.edu.ng
+Diseye Sien,diseye.sien25@wigweuniversity.edu.ng
+Spencerdgreat Paul-Worika,spencerdgreat.paul_worika25@wigweuniversity.edu.ng
+Progress Tom,progress.tom25@wigweuniversity.edu.ng
+Richman Isaiah,richman.isaiah25@wigweuniversity.edu.ng
+Oritsejemiyotan Edun,oritsejemiyotan.edun25@wigweuniversity.edu.ng
+Zilayefa Igbunu,zilayefa.igbunu25@wigweuniversity.edu.ng
+Efe Adagbra,efe.adagbra25@wigweuniversity.edu.ng
+Edith Lemon,edith.lemon25@wigweuniversity.edu.ng
+Tamarabrakemi Adika,tamarabrakemi.adika25@wigweuniversity.edu.ng
+Zorbari Lawrence,zorbari.lawrence25@wigweuniversity.edu.ng
+Kelvin Lube,kelvin.lube25@wigweuniversity.edu.ng
+Biedomo Leghemo,biedomo.leghemo25@wigweuniversity.edu.ng
+Miracle Ayebanoa,miracle.ayebanoa25@wigweuniversity.edu.ng
+Roland Mala,roland.mala25@wigweuniversity.edu.ng
+Laurita Lawson,laurita.lawson25@wigweuniversity.edu.ng
+Victor Simeon,victor.simeon25@wigweuniversity.edu.ng
+Esosa Obaseki,esosa.obaseki25@wigweuniversity.edu.ng
+Walter Amafaye,walter.amafaye25@wigweuniversity.edu.ng
+Biye Asaikpuka,biye.asaikpuka25@wigweuniversity.edu.ng
+Omonefe Kio,omonefe.kio25@wigweuniversity.edu.ng
+Mirabel Idibi,mirabel.idibi25@wigweuniversity.edu.ng
+Timiepere Aseri,timiepere.aseri25@wigweuniversity.edu.ng
+Chukwuebuka Nze,chukwuebuka.nze25@wigweuniversity.edu.ng
+Degbeye Ebitebela,degbeye.ebitebela25@wigweuniversity.edu.ng
+Juliet Akpowaide,juliet.akpowaide25@wigweuniversity.edu.ng
+Queen Moyo,queen.moyo25@wigweuniversity.edu.ng
+Isioma Ugoji,isioma.ugoji25@wigweuniversity.edu.ng
+Favoured Igali,favoured.igali25@wigweuniversity.edu.ng
+Ebiyor Anthony,ebiyor.anthony25@wigweuniversity.edu.ng
+Charity Erinkoko,charity.erinkoko25@wigweuniversity.edu.ng
+Anthony Amughan,anthony.amughan25@wigweuniversity.edu.ng
+Chidinma Ehibudu,chidinma.ehibudu25@wigweuniversity.edu.ng
+Chukwudi Amako,chukwudi.amako25@wigweuniversity.edu.ng
+Tamaraudenyefa Ayemi,tamaraudenyefa.ayemi25@wigweuniversity.edu.ng
+Emmanuel Leleituagha,emmanuel.leleituagha25@wigweuniversity.edu.ng
+Perefajufa Abednego,perefajufa.abednego25@wigweuniversity.edu.ng
+Elvis Ogbunude,elvis.ogbunude25@wigweuniversity.edu.ng
+Taretimi Emmanuel,taretimi.emmanuel25@wigweuniversity.edu.ng
+Emmanuella Joseph,emmanuella.joseph25@wigweuniversity.edu.ng
+Efetobore Ugen,efetobore.ugen25@wigweuniversity.edu.ng
+Tarilayefa Kekemeke,tarilayefa.kekemeke25@wigweuniversity.edu.ng
+Favour Preye,favour.preye25@wigweuniversity.edu.ng
+Chiburoma Hadassah Chiorlu,chiburomahadassah.chiorlu25@wigweuniversity.edu.ng
+Shalom Ogunka,shalom.ogunka25@wigweuniversity.edu.ng
+Solomon Alfred,solomon.alfred25@wigweuniversity.edu.ng
+Destiny Anenene,destiny.anenene25@wigweuniversity.edu.ng
+Great Uyaterimor,great.uyaterimor25@wigweuniversity.edu.ng
+Favour Oboko,favour.oboko25@wigweuniversity.edu.ng
+Bright Okpiri,bright.okpiri25@wigweuniversity.edu.ng
+Praise God Abugo,praisegod.abugo25@wigweuniversity.edu.ng
+Finitei Tunyan,finitei.tunyan25@wigweuniversity.edu.ng
+Freedom Roland,freedom.roland25@wigweuniversity.edu.ng
+Chinemerem Godswill,chinemerem.godswill25@wigweuniversity.edu.ng
+Emmanuel Tabita,emmanuel.tabita25@wigweuniversity.edu.ng
+Omamoke Egone,omamoke.egone25@wigweuniversity.edu.ng
+Jehff Jeclives,jehff.jeclives25@wigweuniversity.edu.ng
+Anderson Darlington,anderson.darlington25@wigweuniversity.edu.ng
+Brakemi Esite,brakemi.esite25@wigweuniversity.edu.ng
+Tamaratare Gbe,tamaratare.gbe25@wigweuniversity.edu.ng
+Jewel Dappa,jewel.dappa25@wigweuniversity.edu.ng
+Ayibaditomini Idoughe,ayibaditomini.idoughe25@wigweuniversity.edu.ng
+Mitchell Brown,mitchell.brown25@wigweuniversity.edu.ng
+Michael Anaro,michael.anaro25@wigweuniversity.edu.ng
+Abel Dabor,abel.dabor25@wigweuniversity.edu.ng
+Ebitimi Tonfawei,ebitimi.tonfawei25@wigweuniversity.edu.ng
+Ebidi Wilsom,ebidi.wilsom25@wigweuniversity.edu.ng
+Christopher Billy,christopher.billy25@wigweuniversity.edu.ng
+Ebis Uyaterimor,ebis.uyaterimor25@wigweuniversity.edu.ng
+Goodluck Dabor,goodluck.dabor25@wigweuniversity.edu.ng
+Ephraim Febaide,ephraim.febaide25@wigweuniversity.edu.ng
+Eshorame James,eshorame.james25@wigweuniversity.edu.ng
+Ezer Ashiegbu,ezer.ashiegbu25@wigweuniversity.edu.ng
+Emmanuel Freeborn,emmanuel.freeborn25@wigweuniversity.edu.ng
+Peremobo Ajube,peremobo.ajube25@wigweuniversity.edu.ng
+Raphael Chukwumati,raphael.chukwumati25@wigweuniversity.edu.ng
+Godswill Asia,godswill.asia25@wigweuniversity.edu.ng
+Great Itomu,great.itomu25@wigweuniversity.edu.ng
+Jesse Iyagba,jesse.iyagba25@wigweuniversity.edu.ng
+Chinemerem Ezinna,chinemerem.ezinna25@wigweuniversity.edu.ng
+Oluwatobiloba Adesanya,oluwatobiloba.adesanya25@wigweuniversity.edu.ng
+Tochukwu Nebolisa,tochukwu.nebolisa25@wigweuniversity.edu.ng
+Chijiokem Nwaokobia,chijiokem.nwaokobia25@wigweuniversity.edu.ng
+Anointed Oyabrade,anointed.oyabrade25@wigweuniversity.edu.ng
+Izokumor Mamawei,izokumor.mamawei25@wigweuniversity.edu.ng
+Ayebaifie Lucky,ayebaifie.lucky25@wigweuniversity.edu.ng
+Joy Uwubiti,joy.uwubiti25@wigweuniversity.edu.ng
+Sarah Perekosifa,sarah.perekosifa25@wigweuniversity.edu.ng
+Tombra Orugbo,tombra.orugbo25@wigweuniversity.edu.ng
+Joyce Makaraba,joyce.makaraba25@wigweuniversity.edu.ng
+Simeon Emmanuel,simeon.emmanuel25@wigweuniversity.edu.ng
+David Ogbugo,david.ogbugo25@wigweuniversity.edu.ng
+Ebitimi Emmanuel,ebitimi.emmanuel25@wigweuniversity.edu.ng
+Eze Philemon,eze.philemon25@wigweuniversity.edu.ng
+Brave Ogu-Kingsley,brave.ogu_kingsley25@wigweuniversity.edu.ng
+Godwin Sipasi,godwin.sipasi25@wigweuniversity.edu.ng
+Doubra Meinfade,doubra.meinfade25@wigweuniversity.edu.ng
+Peremor Anthony,peremor.anthony25@wigweuniversity.edu.ng
+Layefa Ganfo,layefa.ganfo25@wigweuniversity.edu.ng
+Prosper Gbadia,prosper.gbadia25@wigweuniversity.edu.ng
+Ayibapriye Igarama,ayibapriye.igarama25@wigweuniversity.edu.ng
+Angel Stevens,angel.stevens25@wigweuniversity.edu.ng
+Edidiong Okon,edidiong.okon25@wigweuniversity.edu.ng
+Emmanuelah Pepple,emmanuelah.pepple24@wigweuniversity.edu.ng
+Destiny Oguma,destiny.oguma25@wigweuniversity.edu.ng
+Okeoghene Onokohwomo,okeoghene.onokohwomo25@wigweuniversity.edu.ng
+Ebimor Obode,ebimor.obode25@wigweuniversity.edu.ng
+Great Victor,great.victor25@wigweuniversity.edu.ng
+Peculiar Chukwu,peculiar.chukwu25@wigweuniversity.edu.ng
+Ogonna Nwuke,ogonna.nwuke25@wigweuniversity.edu.ng
+Epebitimi Orudubo,epebitimi.orudubo25@wigweuniversity.edu.ng
+Great Gbenebode,great.gbenebode25@wigweuniversity.edu.ng
+Wisdom Fabor,wisdom.fabor25@wigweuniversity.edu.ng
+Clement Mala,clement.mala25@wigweuniversity.edu.ng
+Divine Governor,divine.governor25@wigweuniversity.edu.ng
+Davis Zipador,davis.zipador25@wigweuniversity.edu.ng
+Daniel Ibibo,daniel.ibibo25@wigweuniversity.edu.ng
+Mishael Yahaya,mishael.yahaya25@wigweuniversity.edu.ng
+Ejimofor Okwechime,ejimofor.okwechime25@wigweuniversity.edu.ng
+Osuwo Gbozimor,osuwo.gbozimor25@wigweuniversity.edu.ng
+Moses Fawari,moses.fawari25@wigweuniversity.edu.ng
+Emmanuel Izubiri,emmanuel.izubiri25@wigweuniversity.edu.ng
+Ayebawanaemi DanJumbo,ayebawanaemi.dan_jumbo25@wigweuniversity.edu.ng
+Joy Tonye,joy.tonye25@wigweuniversity.edu.ng
+Wisdom Edmond,wisdom.edmond25@wigweuniversity.edu.ng
+Zahra Okechukwu-Nnachi,zahra.okechukwu_nnachi25@wigweuniversity.edu.ng
+Oyeinmiesinde Pious,oyeinmiesinde.pious25@wigweuniversity.edu.ng
+Phebean Ogunderu,phebean.ogunderu25@wigweuniversity.edu.ng
+Ayibawakiente Beregha,ayibawakiente.beregha25@wigweuniversity.edu.ng
+Favour Ekpetipu,favour.ekpetipu25@wigweuniversity.edu.ng
+Joshua Oboku,joshua.oboku25@wigweuniversity.edu.ng
+George Newman,george.newman25@wigweuniversity.edu.ng
+Samuel Romeo,samuel.romeo25@wigweuniversity.edu.ng
+Sunshine Uroju,sunshine.uroju25@wigweuniversity.edu.ng
+Iniobong Ebong,iniobong.ebong25@wigweuniversity.edu.ng
+Omiyenyaseiya Tangbe,omiyenyaseiya.tangbe25@wigweuniversity.edu.ng
+Racheal Morgan,racheal.morgan25@wigweuniversity.edu.ng
+Charles Chikere,charles.chikere25@wigweuniversity.edu.ng
+Emmanuel Ekpemandu,emmanuel.ekpemandu25@wigweuniversity.edu.ng
+Moses Simon,moses.simon25@wigweuniversity.edu.ng
+Brandson Agburuga,brandson.agburuga25@wigweuniversity.edu.ng
+Sean Ukpabi,sean.ukpabi25@wigweuniversity.edu.ng
+Progress Tonlagha,progress.tonlaghaprecious25@wigweuniversity.edu.ng
+Paul Agboufa Chizoa,paul.agboufachizoa25@wigweuniversity.edu.ng
+Jessica Napoleon,jessica.napoleon25@wigweuniversity.edu.ng
+Williams Koffie,williams.koffie25@wigweuniversity.edu.ng
+Elohor Benedicta Idonoteguono,elohorbenedicta.idonoteguono25@wigweuniversity.edu.ng
+Prince Opuende,prince.opuende25@wigweuniversity.edu.ng
+Oghenemarho Olori,oghenemarho.olori25@wigweuniversity.edu.ng
+Chioma Dimgba,chioma.dimgba25@wigweuniversity.edu.ng
+Yerin Amos,yerin.amos25@wigweuniversity.edu.ng
+Tamarau-Ebi Odeh,tamarau_ebi.odeh25@wigweuniversity.edu.ng
+Robert Ejiofor,robert.ejiofor25@wigweuniversity.edu.ng
+</file>
+
 <file path="waitlist/__init__.py">
 
 </file>
@@ -694,6 +954,46 @@ from django.apps import AppConfig
 
 class WaitlistConfig(AppConfig):
     name = 'waitlist'
+</file>
+
+<file path="waitlist/management/__init__.py">
+
+</file>
+
+<file path="waitlist/management/commands/__init__.py">
+
+</file>
+
+<file path="waitlist/management/commands/import_waitlist.py">
+import csv
+
+from django.core.management.base import BaseCommand
+
+from waitlist.models import WaitlistEntry
+
+
+class Command(BaseCommand):
+    help = "Bulk import waitlist entries from a CSV with name,email columns."
+
+    def add_arguments(self, parser):
+        parser.add_argument("csv_path")
+
+    def handle(self, *args, **options):
+        created = skipped = 0
+        with open(options["csv_path"], newline="", encoding="utf-8") as f:
+            for row in csv.DictReader(f):
+                email = (row.get("email") or "").strip().lower()
+                name = (row.get("name") or "").strip()
+                if not email:
+                    continue
+                _, was_created = WaitlistEntry.objects.get_or_create(
+                    email=email, defaults={"name": name}
+                )
+                if was_created:
+                    created += 1
+                else:
+                    skipped += 1
+        self.stdout.write(self.style.SUCCESS(f"Added {created}, skipped {skipped} already on the list."))
 </file>
 
 <file path="waitlist/migrations/__init__.py">
@@ -793,25 +1093,6 @@ CORS_ALLOWED_ORIGINS=http://localhost:5173,http://127.0.0.1:5173
 WAITLIST_COUNT_OFFSET=0
 </file>
 
-<file path="config/urls.py">
-from django.contrib import admin
-from django.http import JsonResponse
-from django.urls import path, include
-
-
-def health_check(request):
-    return JsonResponse({"status": "ok"})
-
-
-urlpatterns = [
-    path("admin/", admin.site.urls),
-    path("api/health/", health_check),
-    path("api/waitlist/", include("waitlist.urls")),
-    path("api/faqs/", include("faqs.urls")),
-    path("api/testimonials/", include("testimonials.urls")),
-]
-</file>
-
 <file path="README.md">
 # Tova — Backend
 
@@ -891,88 +1172,6 @@ waitlist/       WaitlistEntry model + /api/waitlist/ and /api/waitlist/count/
 faqs/           FAQ + FAQQuestion models + /api/faqs/ and /api/faqs/ask/
 testimonials/   Testimonial model + /api/testimonials/ and /api/testimonials/submit/
 ```
-</file>
-
-<file path="testimonials/admin.py">
-from django.contrib import admin
-
-from .models import Testimonial
-
-
-@admin.register(Testimonial)
-class TestimonialAdmin(admin.ModelAdmin):
-    list_display = ["name", "university", "rating", "is_approved", "created_at"]
-    list_editable = ["is_approved"]
-    list_filter = ["is_approved", "rating", "university"]
-    search_fields = ["name", "quote", "university"]
-    ordering = ["-created_at"]
-</file>
-
-<file path="testimonials/models.py">
-from django.db import models
-
-
-class Testimonial(models.Model):
-    """A testimonial submitted by a visitor. Only shown on the site once approved."""
-
-    RATING_CHOICES = [(i, str(i)) for i in range(1, 6)]
-
-    name = models.CharField(max_length=120)
-    quote = models.TextField(max_length=600)
-    rating = models.PositiveSmallIntegerField(choices=RATING_CHOICES, default=5)
-    university = models.CharField(max_length=150, blank=True, default="")
-    is_approved = models.BooleanField(
-        default=False,
-        help_text="Only approved testimonials appear on the public site.",
-    )
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    class Meta:
-        ordering = ["-created_at"]
-        verbose_name = "Testimonial"
-        verbose_name_plural = "Testimonials"
-
-    def __str__(self):
-        return f"{self.name} ({self.rating}\u2605)"
-</file>
-
-<file path="testimonials/serializers.py">
-from rest_framework import serializers
-
-from .models import Testimonial
-
-
-class TestimonialSerializer(serializers.ModelSerializer):
-    """Used for the public GET list — approved testimonials only."""
-
-    class Meta:
-        model = Testimonial
-        fields = ["id", "name", "quote", "rating", "university", "created_at"]
-
-
-class TestimonialSubmitSerializer(serializers.ModelSerializer):
-    """Used for the public submission form. is_approved is never exposed here —
-    every submission starts unapproved and waits for admin review."""
-
-    class Meta:
-        model = Testimonial
-        fields = ["id", "name", "quote", "rating", "university"]
-        read_only_fields = ["id"]
-
-    def validate_name(self, value):
-        value = value.strip()
-        if not value:
-            raise serializers.ValidationError("Name can't be empty.")
-        return value
-
-    def validate_quote(self, value):
-        value = value.strip()
-        if not value:
-            raise serializers.ValidationError("Review can't be empty.")
-        return value
-
-    def validate_university(self, value):
-        return (value or "").strip()
 </file>
 
 <file path="testimonials/views.py">
@@ -1150,6 +1349,86 @@ urlpatterns = [
 ]
 </file>
 
+<file path="config/urls.py">
+from django.contrib import admin
+from django.http import JsonResponse
+from django.urls import path, include
+
+
+def health_check(request):
+    return JsonResponse({"status": "ok"})
+
+
+urlpatterns = [
+    path("admin/", admin.site.urls),
+    path("api/health/", health_check),
+    path("api/waitlist/", include("waitlist.urls")),
+    path("api/faqs/", include("faqs.urls")),
+    path("api/testimonials/", include("testimonials.urls")),
+    path("api/partners/", include("partners.urls")),
+]
+</file>
+
+<file path="testimonials/admin.py">
+from django.contrib import admin
+
+from .models import Testimonial
+
+
+@admin.register(Testimonial)
+class TestimonialAdmin(admin.ModelAdmin):
+    list_display = ["name", "category", "role", "university", "rating", "is_approved", "created_at"]
+    list_editable = ["category", "is_approved"]
+    list_filter = ["is_approved", "category", "rating", "university"]
+    search_fields = ["name", "quote", "university", "role"]
+    ordering = ["-created_at"]
+</file>
+
+<file path="testimonials/models.py">
+from django.db import models
+
+
+class Testimonial(models.Model):
+    """A testimonial submitted by a visitor. Only shown on the site once approved."""
+
+    RATING_CHOICES = [(i, str(i)) for i in range(1, 6)]
+
+    CATEGORY_CHOICES = [
+        ("student", "Student / Member"),
+        ("leader", "Pastor / Church leader"),
+    ]
+
+    name = models.CharField(max_length=120)
+    quote = models.TextField(max_length=600)
+    rating = models.PositiveSmallIntegerField(choices=RATING_CHOICES, default=5)
+    university = models.CharField(max_length=150, blank=True, default="")
+    category = models.CharField(
+        max_length=10,
+        choices=CATEGORY_CHOICES,
+        default="student",
+        help_text="Which column of the Home page this appears in.",
+    )
+    role = models.CharField(
+        max_length=150,
+        blank=True,
+        default="",
+        help_text="Shown under the name, e.g. 'Senior Pastor, Lagos'. Falls back to the university if blank.",
+    )
+    is_approved = models.BooleanField(
+        default=False,
+        help_text="Only approved testimonials appear on the public site.",
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-created_at"]
+        verbose_name = "Testimonial"
+        verbose_name_plural = "Testimonials"
+
+    def __str__(self):
+        return f"{self.name} ({self.rating}\u2605)"
+</file>
+
 <file path="waitlist/views.py">
 from django.conf import settings
 from django.db import IntegrityError
@@ -1214,6 +1493,59 @@ class WaitlistCountView(APIView):
         real_count = WaitlistEntry.objects.count()
         offset = getattr(settings, "WAITLIST_COUNT_OFFSET", 0)
         return Response({"count": real_count + offset})
+</file>
+
+<file path="testimonials/serializers.py">
+from rest_framework import serializers
+
+from .models import Testimonial
+
+
+class TestimonialSerializer(serializers.ModelSerializer):
+    """Used for the public GET list — approved testimonials only."""
+
+    class Meta:
+        model = Testimonial
+        fields = [
+            "id",
+            "name",
+            "quote",
+            "rating",
+            "university",
+            "category",
+            "role",
+            "created_at",
+        ]
+
+
+class TestimonialSubmitSerializer(serializers.ModelSerializer):
+    """Used for the public submission form. is_approved is never exposed here —
+    every submission starts unapproved and waits for admin review, so letting
+    visitors pick a category / role is safe: nothing shows until you approve it
+    (and you can recategorise it in the admin)."""
+
+    class Meta:
+        model = Testimonial
+        fields = ["id", "name", "quote", "rating", "university", "category", "role"]
+        read_only_fields = ["id"]
+
+    def validate_name(self, value):
+        value = value.strip()
+        if not value:
+            raise serializers.ValidationError("Name can't be empty.")
+        return value
+
+    def validate_quote(self, value):
+        value = value.strip()
+        if not value:
+            raise serializers.ValidationError("Review can't be empty.")
+        return value
+
+    def validate_university(self, value):
+        return (value or "").strip()
+
+    def validate_role(self, value):
+        return (value or "").strip()
 </file>
 
 <file path="config/settings.py">
@@ -1306,6 +1638,7 @@ INSTALLED_APPS = [
     "waitlist",
     "faqs",
     "testimonials",
+    "partners",
 ]
 
 MIDDLEWARE = [
@@ -1421,6 +1754,8 @@ REST_FRAMEWORK = {
     ],
     "DEFAULT_THROTTLE_RATES": {
         "anon": "30/minute",
+        # Partnership inquiry form: stricter limit to stop spam.
+        "inquiry": "5/hour",
     },
 }
 </file>
